@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+
+     <!-- Bootstrap Stylesheet-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <!-- Bootstrap Script-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     
+     <!--Plugin CSS file with desired skin-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+
+    <!-- STYLESHEET -->
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+         
+         
+        :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1.15rem;
+            --small-fontsize: 1.3rem;
+            --medium-fontsize: 1.5rem;
+            --large-fontsize: 2.6rem;
+            --xl-fontsize: 3.4rem;
+            --header-fontsize: 4.5rem;
+        }
+        *{
+            outline: none !important;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: "Montserrat", sans-serif;
+           -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body::-webkit-scrollbar{
+            display: none;
+        }
+        .hl_page-preview--content .col-fA81ydK1LP, .hl_page-preview--content .row-3oBWAtBEBi, .hl_page-preview--content .section-nBowj-SMYP, .container{
+       		padding: 0;
+       }
+      #section-nBowj-SMYP>.inner {
+			margin: 0;
+         width: 100vw !important;
+         max-width: 100% !important;
+       }
+      .navbar{
+            --bs-navbar-padding-y: 2rem;
+        }
+        #navbar-original{
+            z-index: 100000;
+          width: 100%;
+        }
+        .navbar-toggler{
+            font-size: 13px;
+            border: none;
+        }
+        a.navbar-brand{
+            height: 100%;
+            width: 220px;
+            /* margin-left: -50px; */
+            margin-top: -10px;
+        }
+        a.navbar-brand img{
+            height: 100%;
+            width: 100%;
+        }
+        .navbar>.container{
+            gap: 2rem !important;
+        }
+        .navbar-collapse{
+            justify-content: space-around;
+        }
+        .navbar-nav{
+            width: 100%;
+            justify-content: space-around !important;
+        }
+        a.nav-link, a.dropdown-item{
+            font-size: var(--tiny-fontsize) !important;
+          font-family: "Lora", serif !important;
+        }
+        .nav-link:hover{
+            transform: scale(1.1);
+        }
+        .nav-link.active:hover{
+            transform: none;
+        }
+        .nav-link.active{
+            font-weight: 700;
+        }
+       .nav-link.login{
+            	margin-left: 2rem;
+            }
+        .try-for-free{
+            font-size: 1rem !important;
+            border: 2px solid #fff;
+            padding: 0 25px;
+            margin-left: 20px;
+            margin-top: -5px;
+            transition: all 1.5s ease;
+        }
+        .nav-item.try-for-free:hover{
+            background-color: #fff;
+        }
+        .nav-link.try-link:hover{
+            transform: none;
+            color: #000;
+        }
+        /* For the duplicate */
+        /* .navbar-duplicate{
+            position: absolute;
+            top: 0;
+            left: 0;
+        } */
+        #nav_scroll{
+            /* box-shadow: 0 0 17px 0 #000; */
+            transition: all 1s ease-in-out;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+        /* .hide{
+            margin-top: -100px;
+        }
+        .reveal{
+            margin-top: 0;
+        } */
+        .navbar-duplicate .nav-item .nav-link{
+            color: #7c7c7c;
+        }
+        .navbar-duplicate .nav-link.active{
+            color: #000;
+        }
+        .navbar-duplicate .nav-item.try-for-free{
+            border-color: #000;
+        }
+        .navbar-duplicate .nav-item.try-for-free:hover{
+            background-color: #000;
+        }
+        .navbar-duplicate .nav-link.try-link:hover{
+            color: #fff;
+        }
+        .scroll-up #nav_scroll{
+            filter: drop-shadow(0 -10px 20px #000);
+        }
+        .scroll-down #nav_scroll{
+            transform: translate3d(0, -100%, 0);
+        }
+
+        /* MAIN CONTENT */
+        .pricing-container, .slider-container, .cards-container{
+            padding: 0 40px;
+            margin-top: 50px;
+            margin-bottom: 120px;
+        }
+        .pricing-paragraph{
+            margin: 20px auto;
+            text-align: center;
+        }
+        .pricing-heading{
+            word-wrap: break-word;
+            margin: 20px auto;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .pricing-heading h1>strong{
+            font-size: var(--header-fontsize);
+            font-weight: bold;
+            color: #000;
+        }
+        .pricing-heading h3>strong{
+            font-size: var(--large-fontsize);
+            font-weight: bold;
+            color: #f75d1d;
+        }
+        .pricing-paragraph p{
+            font-size: var(--small-fontsize);
+        }
+        .cards-row div.card{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: inherit;
+            flex-wrap: nowrap;
+            flex-shrink: 0;
+            padding: 10px;
+            /* max-width: 22.4rem;
+            width: 100%; */
+            margin-left: 10px;
+            margin-right: 10px;
+            height: 100%;
+            background-color: #fff;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,.2);
+            min-height: 220px;
+            min-width: 270px;
+
+        }
+         .cards-container{
+            position: relative;
+            max-width: 144rem;
+            height: 1280px;
+            padding: 40px 10px;
+            background-color: #f0f0f0;
+            margin-top: -50px;
+        }
+        .cards-row{
+            justify-content: space-between;
+            padding: 0 30px;
+            width: 100%;
+            height: 100%;
+            gap: 2rem;
+        }
+        .cards-row::-webkit-scrollbar{
+            display: none;
+        }
+        .edu-sections{
+            margin-bottom: 40px;
+        }
+        .edu-exp{
+            width: 20%;
+            display: flex;
+            justify-content: space-evenly;
+            margin: 40px auto;
+        }
+        .edu-btn:nth-child(2){
+            margin-left: -10px;
+        }
+        .edu-btn{
+            color: #000;
+            font-weight: 500;
+            background-color: transparent;
+            font-size: var(--small-fontsize);
+            border: none;
+            margin-bottom: 80px;
+            padding: 10px 40px;
+            border-bottom: 3px solid rgba(246,173,85,.3);
+            border-radius: 0;
+        }
+        .edu-btn:hover, .edu-btn:focus{
+            border-radius: 0;
+            color: #f75d1d; 
+            border-bottom: 5px solid rgba(246,173,85,.3);
+        }
+        .underline, .underline:hover, .underline:focus{
+          z-index: 9;
+            color: #000;
+            border-radius: 0;
+            border-bottom: 5px solid #f75d1d; 
+        }
+        /* .edu-data{
+            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            column-gap: 1.2rem;
+            margin-bottom: var(--mb-lg);
+        } */
+        .cards-container [data-content]{
+            display: none;
+        }
+        .cards-container .selected[data-content]{
+            display: flex;
+        }
+        .card>.title{
+            padding: 5px 2px;
+            position: relative;
+            /* height: 100%;
+            width: 100%; */
+            color: #fff;
+            font-size: var(--medium-fontsize);
+            /* border: 1px solid transparent;
+            border-radius: 10px; */
+            line-height: 1.3em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .card>.price{
+            padding: 5px 0;
+            position: relative;
+            /* height: 100%;
+            width: 100%; */
+            color: #1271A6;
+            line-height: 1.3em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .card>.title h4{
+            font-size: var(--medium-fontsize);
+            font-weight: 700;
+            color: #1271A6;
+        }
+        .card>.price h6{
+            font-size: var(--large-fontsize);
+        }
+        div.card a{
+            width: 80%;
+            margin: 10px auto;
+        }
+        .card-btn{
+            padding: 10px 5px;
+            font-size: var(--small-fontsize);
+            font-weight: 700;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,.4);
+            width: 100%;
+            background-color: #f75d1d;
+            color: #fff;
+        }
+        .card-btn:hover{
+            transform: scale(1.05);
+        }
+        .card .list{
+            color: #000;
+            font-weight: 400;
+            padding: 0 0 0 30px;
+            opacity: 1;
+            line-height: 1.3em;
+            text-align: left;
+            margin-top: 15px;
+        }
+        .card .list p{
+            font-weight: 500;
+            font-size: var(--medium-fontsize);
+            line-height: 1.2;
+        }
+        .card .list ul{
+            list-style-type: none;
+            padding: 0 0 0 1.5em;
+        }
+        .card .list ul li{
+            list-style-type: "✓";
+            padding-inline-start: 0.5em;
+            padding-left: 1.5em;
+            margin-bottom: 1rem;
+            margin-left: -20px;
+            font-size: calc(var(--tiny-fontsize)-10px);
+        }
+        .card .list ul li strong{
+            font-weight: 500;
+        }
+        /* ul.child-list li:nth-child(1){
+       		margin-top: 5px;
+       }
+       ul.child-list li:nth-child(2){
+       		margin-top: -5px;
+       } */
+       ul.child-list{
+        margin-top: .8em;
+       }
+       li strong{
+       	font-weight: none !important;
+       }
+       .powerpixelplusgrowth-plan ul>li:nth-child(6), .enterprise-plan ul>li:nth-child(6){
+       		font-weight: 600;
+       }
+        ul.child-list li{
+            list-style-type: none !important;
+            margin-top: .5em;
+        }
+        li strong ul.child-list li{
+       		margin-top: .2em;
+       }
+        .card-1 .price p{
+            color: #000;
+            font-weight: 700;
+            width: 80%;
+            margin: 10px auto;
+        }
+        .card-1 .card-btn{
+            background-color: #000;
+        }
+        .card .price p{
+            font-size: calc(var(--tiny-fontsize)-14px);
+        }
+       .card .price p:nth-child(1){
+          	font-size: calc(var(--tiny-fontsize)-12px);
+            color: #000;
+            margin-bottom: 40px;
+            padding: 2px 10px;
+         text-align: center;
+        }
+       .powerpixelplusgrowth-plan .price p:nth-child(1){
+            margin-top: -15px;
+         	margin-bottom: 30px;
+        }
+        .card .credit-form{
+            margin: 10px auto;
+            width: 77%;
+            /* padding: 5px 20px; */
+        }
+        .card .credit-form select{
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .card .credit-form select option{
+           padding: 8px 5px;
+        }
+        .card .credit-form select::-webkit-scrollbar{
+            display: none;
+        }
+        .card .credit-form select:focus > option:hover{
+            background-color: rgba(246,173,85,.8);
+            /* color: #fff; */
+        }
+        .card .credit-form select option:checked{
+            box-shadow: 0 0 10px 100px #f75d1d inset !important;
+        }
+        .card .credit-form select > option{
+            padding: 5px;
+            margin: 0 auto; 
+        }
+        .card span{
+            color: #f75d1d;
+        }
+       .enterprise-plan .price p:nth-child(2){
+       		color: #1271A6;
+       }
+        .enterprise-plan.card{
+            background-color: #f75d1d !important;
+        }
+        .enterprise-plan .title h4{
+            color: #fff !important;
+        }
+        .enterprise-plan .price{
+            color: #FAF9F6;
+        }
+        .enterprise-plan .price h6{
+            padding: 4px 20px;
+        }
+        .enterprise-plan  .card-btn{
+            color: #f75d1d;
+            background-color: #fff;
+        }
+        .enterprise-plan .list ul li{
+            color: #FAF9F6;
+        }
+        .enterprise-plan .price p:nth-child(1) {
+            color: #fff;
+        }
+        .pp-features{
+            margin-top: 80px;
+        }
+        .pp-features h3{
+            font-size: var(--medium-fontsize);
+            color: #f75d1d;
+        }
+        .pp-features ul li{
+            list-style-type: none;
+            font-size: var(--small-fontsize);
+            margin-bottom: 30px;
+        }
+        .pp-features ul li>span{
+            font-weight: 700;
+        }
+        .box{
+            position: relative;
+            padding: 10px 20px 40px 10px;
+            border: 10px solid #1271A6;
+            border-radius: 10px;
+            height: auto;
+            width: 100%;
+            margin-top: 50px;
+        }
+        .box-feature{
+            padding: 5px 20px;
+            background-color: #f75d1d;
+            width: fit-content;
+            color: #fff;
+            font-size: var(--small-fontsize);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        .box p, .box h5{
+            text-align: center;
+            font-size: var(--small-fontsize);
+        }
+        .box h5{
+            color: #1271A6;
+            font-weight: 700;
+        }
+        .para{
+            margin-top: 40px;
+            color: #000;
+            font-weight: 500;
+            font-size: var(--small-fontsize);
+            text-align: center;
+        }
+        .bookcall-container{
+            background-color: #f0f0f0;
+            height: fit-content;
+            padding: 40px 10px;
+            text-align: center;
+            margin-bottom: 120px;
+        }
+        .bookcall-container h3{
+            color: #000;
+            font-size: var(--large-fontsize);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        .bookcall-container button{
+            width: fit-content;
+            padding: 10px 40px;
+            background-color: #f75d1d;
+            border: 2px solid #f75d1d;
+            border-radius: 25px;
+            box-shadow: 0 1px 5px rgba(0,0,0,.7);
+        }
+        .bookcall-container button:hover{
+            transform: scale(1.03);
+        }
+        .bookcall-container button a{
+            text-decoration: none;
+            font-size: var(--small-fontsize);
+            color: #fff;
+            font-weight: 500;
+        }
+        .choose{
+            min-height: 440px !important;
+            padding: 10px 20px 80px;
+            text-align: center;
+            box-shadow: 0 1px 5px rgba(0,0,0,.2);
+            margin-bottom: 80px;
+        }
+        .choose img{
+            margin: 10px auto;
+            width: 120px;
+            height: auto;
+        }
+        .choose span{
+            color: #f75d1d;
+            font-size: var(--small-fontsize);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .choose p{
+            color: #000;
+            font-size: var(--small-fontsize);
+        }
+        .accordion-button{
+            font-size: var(--small-fontsize);
+        }
+        .accordion-item{
+            background-color: antiquewhite;
+            border: 1px solid #f75d1d;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+        .accordion-button{
+            border: 1px solid #f75d1d;
+            border-radius: 20px;
+        }
+        .accordion-body{
+            background-color: antiquewhite;
+            font-size: var(--tiny-fontsize);
+            border-radius: 20px;
+            padding-bottom: 10px;
+            min-height: 120px;
+        }
+
+        /* FOOTER  */
+        .footer-container{
+            margin-top: 80px;
+            background-color: #000;
+            padding: 15px 20px;
+        }
+        .footer-container .row{
+            justify-content: space-around !important;
+        }
+        .footer-container p{
+            font-size: var(--tiny-fontsize);
+            font-weight: 500;
+            color: #fff;
+        }
+        .footer-container .first-row img{
+            height: 80px;
+            width: 280px;
+        }
+        .footer-container .second-row{
+            margin-left: -150px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+        .footer-container .second-row p{
+            text-align: center;
+        }
+        .footer-container .third-row{
+            margin-top: 20px;
+        } 
+        .footer-container .third-row .login-btn{
+            margin-bottom: 30px;
+            border: 1px solid transparent;
+            color: #fff;
+            font-size: var(--tiny-fontsize);
+            font-weight: 500;
+            padding: 5px 30px;
+            box-shadow: 0 1px 5px rgba(256,256,256,.7);
+        }
+        .login-btn:hover{
+            transform: scale(1.03);
+        }
+          /* For small devices */
+          @media only screen and (width <= 1300px){
+            :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1.15rem;
+            --small-fontsize: 1.2rem;
+            --medium-fontsize: 1.45rem;
+            --large-fontsize: 2.2rem;
+            --xl-fontsize: 3.3rem;
+            --header-fontsize: 4rem;
+        }
+          }
+       @media (714px < width <= 1286px){
+       		   .cards-row{
+            overflow-x: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            flex-wrap: nowrap;
+        }
+        .powerpixelplus-plan .price p:nth-child(1){
+            margin-top: -15px;
+         	margin-bottom: 30px;
+        }
+       }
+          @media (480px < width <= 1300px) {
+              #navbar-original.navbar{
+          
+                 width: 100vw !important;
+        }
+           
+                 /* a.nav-link, a.dropdown-item{
+            font-size: tin !important;
+        } */
+             .scroll-up #nav_scroll{
+            filter: none;
+            box-shadow: 0 -10px 20px #000;
+        }
+            a.navbar-brand{
+            width: 190px;
+        }
+             .nav-link:hover{
+            transform: none;
+        }
+        .navbar>.container{
+            gap: 1rem !important;
+        }
+             div.offcanvas-body{
+       		margin-left: 0;
+       }
+
+            
+        }
+        @media only screen and (width <= 768px){
+            .container{
+                width: 100%;
+            }
+            .cards-container{
+                height: 100%;
+            }
+          .cards-row{
+          	align-items: center;
+          }
+           .cards-row div.card{
+          		margin-left: 0px;
+            margin-right: 0px;
+          }
+            .cards-container>.cards-row div.card{
+                min-width: 100% !important;
+                min-height: 1105px !important;
+                margin-bottom: 15px;
+              padding: 5px 24px;
+            }
+            .row{
+                overflow-x: none;
+                flex-wrap: wrap;
+              margin-left: 0px;
+            margin-right: 0px;
+            }
+           .cards-container .selected[data-content]{
+            display: block;
+        }
+           .card .credit-form{
+            width: 90%;
+        }
+            .col{
+                width: 100% !important;
+            }
+            .footer-container .second-row{
+                margin-left: 0px !important;
+            }
+            .footer-container .first-row{
+                text-align: center;
+            }
+            .footer-container .third-row{
+                text-align: center;
+            }
+        } 
+
+        /* For smaller devices */
+        @media only screen and (width <= 576px) {
+            :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1rem;
+            --small-fontsize: 1.08rem;
+            --medium-fontsize: 1.2rem;
+            --large-fontsize: 1.8rem;
+            --xl-fontsize: 2.2rem;
+            --header-fontsize: 2.5rem;
+        }
+           .pricing-container{
+            padding: 0 10px;
+        }
+               #navbar-original.navbar{
+           	 margin-left: -10px;
+                 width: 100vw;
+                 padding-right: 10px;
+                 padding-left: 10px;
+        }
+          #nav_scroll{
+          	padding-right: 10px;
+                 padding-left: 10px;
+          }
+          .nav-link.login{
+            	margin-left: 0;
+            }
+          .scroll-up #nav_scroll{
+            filter: none;
+            box-shadow: 0 -10px 20px #000;
+        }
+            a.navbar-brand{
+            height: 100%;
+            width: 180px;
+            margin-left: 0;
+            margin-top: 0;
+        }
+           .nav-link:hover{
+            transform: none;
+        }
+        .try-for-free{
+            font-size: 1rem;
+            border: 2px solid #fff;
+            padding: 0 5px;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+        .nav-link.login{
+            margin-top: 30px !important;
+            border-top: 1px solid #7c7c7c;
+        }
+                div.offcanvas-body{
+       		margin-left: 0;
+       }
+       .cards-container>.cards-row div.card{
+                min-height: 1028px !important;
+                margin-bottom: 15px;
+            }
+          .card>.price h6{
+            font-size: calc(var(--large-fontsize) + 9px);
+          }
+          .cards-row{
+          	align-items: center;
+          }
+           .cards-row div.card{
+          		margin-left: 0px;
+            margin-right: 0px;
+          }
+        }
+         /* For smaller devices */
+        @media only screen and (width <= 360px) {
+            :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1rem;
+            --small-fontsize: 1.05rem;
+            --medium-fontsize: 1.15rem;
+            --large-fontsize: 1.4rem;
+            --xl-fontsize: 1.8rem;
+            --header-fontsize: 2.1rem;
+        }
+          .container{
+                width: 100%;
+            }
+           .row{
+                overflow-x: none;
+                flex-wrap: wrap;
+            }
+                   .pricing-container{
+            padding: 0 10px;
+        }
+               #navbar-original.navbar{
+           	 margin-left: -10px;
+                 width: 100vw;
+                 padding-right: 10px;
+                 padding-left: 10px;
+        }
+          #nav_scroll{
+          	padding-right: 10px;
+                 padding-left: 10px;
+          }
+          .nav-link.login{
+            	margin-left: 0;
+            }
+          .scroll-up #nav_scroll{
+            filter: none;
+            box-shadow: 0 -10px 20px #000;
+        }
+            a.navbar-brand{
+            height: 100%;
+            width: 160px;
+            margin-left: 0;
+            margin-top: 0;
+        }
+           .nav-link:hover{
+            transform: none;
+        }
+        .try-for-free{
+            font-size: 1rem;
+            border: 2px solid #fff;
+            padding: 0 5px;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+        .nav-link.login{
+            margin-top: 30px !important;
+            border-top: 1px solid #7c7c7c;
+        }
+                div.offcanvas-body{
+       		margin-left: 0;
+       }
+           .cards-container{
+                height: 100%;
+            }
+           .cards-row{
+          	align-items: center;
+          }
+           .cards-row div.card{
+          		margin-left: 0px;
+            margin-right: 0px;
+          }
+           .col{
+                width: 100% !important;
+            }
+           .cards-container .selected[data-content]{
+            display: block;
+        }
+       }
+         /* For smaller devices */
+        @media only screen and (width <= 290px) {
+            :root{
+            /* FONT SIZE */
+            --tiny-fontsize: 1rem;
+            --small-fontsize: 1.03rem;
+            --medium-fontsize: 1.1rem;
+            --large-fontsize: 1.2rem;
+            --xl-fontsize: 1.5rem;
+            --header-fontsize: 2rem;
+        }
+          .container{
+                width: 100%;
+            }
+           .row{
+                overflow-x: none;
+                flex-wrap: wrap;
+            }
+                   .pricing-container{
+            padding: 0 10px;
+        }
+               #navbar-original.navbar{
+           	 margin-left: -10px;
+                 width: 100vw;
+                 padding-right: 10px;
+                 padding-left: 10px;
+        }
+          #nav_scroll{
+          	padding-right: 10px;
+                 padding-left: 10px;
+          }
+          .nav-link.login{
+            	margin-left: 0;
+            }
+          .scroll-up #nav_scroll{
+            filter: none;
+            box-shadow: 0 -10px 20px #000;
+        }
+            a.navbar-brand{
+            height: 100%;
+            width: 160px;
+            margin-left: 0;
+            margin-top: 0;
+        }
+           .nav-link:hover{
+            transform: none;
+        }
+        .try-for-free{
+            font-size: 1rem;
+            border: 2px solid #fff;
+            padding: 0 5px;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+        .nav-link.login{
+            margin-top: 30px !important;
+            border-top: 1px solid #7c7c7c;
+        }
+                div.offcanvas-body{
+       		margin-left: 0;
+       }
+           .cards-container{
+                height: 100%;
+            }
+           .cards-row{
+          	align-items: center;
+          }
+           .cards-row div.card{
+          		margin-left: 0px;
+            margin-right: 0px;
+          }
+           .col{
+                width: 100% !important;
+            }
+           .cards-container .selected[data-content]{
+            display: block;
+        }
+       }
+     </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="nav_scroll" class="navbar navbar-expand-xl hide navbar-duplicate" style="background-color: #FAF9F6;" data-bs-theme="light">
+        <div class="container">
+          <a class="navbar-brand" href="https://pixonomi.com/home">
+            <img src="https://storage.googleapis.com/msgsndr/5j2MPEwpyHAxvamQdcv6/media/654d65f67b3caa0d19935d8a.png" alt="Pixonomi">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+            <div class="offcanvas-header">
+              <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Pixonomi</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/home">PowerPixel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/intentionx">IntentionX</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/b2b-wizard">B2B Wizard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="https://pixonomi.com/pricing">Pricing</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compliance">Compliance</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compare-pixonomi">Compare Pixonomi</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/partners-and-affiliates">Partners & Affiliates</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/contact-us">Contact Us</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/pricing">FAQ</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="https://pixonomi.com/pricing" class="nav-link login"><strong>Login</strong></a>
+            </li>
+            <li class="nav-item try-for-free">
+                <a href="https://pixonomi.com/pricing" class="nav-link try-link">Try for Free</a>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+       <!-- Navbar Duplicate-->
+    <nav id="navbar-original" class="navbar navbar-expand-xl" style="background-color: #000;" data-bs-theme="dark">
+        <div class="container">
+          <a class="navbar-brand" href="https://pixonomi.com/home">
+            <img src="https://storage.googleapis.com/msgsndr/5j2MPEwpyHAxvamQdcv6/media/659036b1888153660e4680b8.png" alt="Pixonomi">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h3 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Pixonomi</h3>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+          <div class="offcanvas-body">
+                    <ul class="navbar-nav flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/home">PowerPixel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/intentionx">IntentionX</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pixonomi.com/b2b-wizard">B2B Wizard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  href="https://pixonomi.com/pricing">Pricing</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compliance">Compliance</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/compare-pixonomi">Compare Pixonomi</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/partners-and-affiliates">Partners & Affiliates</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/contact-us">Contact Us</a></li>
+                    <li><a class="dropdown-item" href="https://pixonomi.com/pricing">FAQ</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="https://pixonomi.com/pricing" class="nav-link login"><strong>Login</strong></a>
+            </li>
+            <li class="nav-item try-for-free">
+                <a href="https://pixonomi.com/pricing" class="nav-link try-link">Try for Free</a>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End of Navbar Duplicate -->
+
+
+      <!-- main content -->
+    <div class="container pricing-container">
+        <div class="pricing-heading">
+            <h1><strong>Flexible Pricing!</strong></h1>
+        </div>
+
+        <div class="pricing-paragraph">
+            <p>Choose the number of credits you want! Simple as that! Credits automatically refill when they're depleted. You can cancel at anytime. No long contracts, no monthly payments. Always fair and easy.</p>
+        </div>
+    </div>
+
+   <!-- CARDS -->
+    <!-- Yearly and Monthly Toggle -->
+    <div class="edu-exp">
+        <div class="edu-btn btn edu selected underline" data-target="#yearly">
+            ANNUALLY
+        </div>
+        <div class="edu-btn btn work" data-target="#monthly">
+            MONTHLY
+        </div>
+    </div>
+    <!--  -->
+
+    <div class="cards cards-container">
+        <!-- ----ANNUAL SUB---- -->
+        <div class="edu-content cards-row row selected" data-content id="yearly">
+            <div class="card-2 powerpixel-plan card col">
+                <div class="title"><h4>PowerPixel Plan</h4></div>
+                <div class="price"><p>For businesses interested in identifying web visitors and tracking their behavior throughout website.</p><h6><strong>$297</strong>/mo</h6><p><strong>Billed Yearly</strong></p></div>
+                <div class="credit-form">
+                    <form id="powerpixelplan-credit-form">
+                        <select
+                         class="form-select powerpixelplan-credit-select form-select mb-3" aria-label="select example">
+                            <option selected value="$297">750 credits/month</option>
+                            <option value="$425">1200 credits/month</option>
+                            <option value="$637">2200 credits/month</option>
+                            <option value="$1,168">5000 credits/month</option>
+                            <option value="$1,593">7500 credits/month</option>
+                            <option value="$1,912">10000 credits/month</option>
+                            <option value="$2,550">15000 credits/month</option>
+                            <option value="$2,975">20000 credits/month</option>
+                            <option value="$3,187">25000 credits/month</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="powerpixel-plan-btn card-btn">GET STARTED</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                        <li>Email Marketing Included<ul class="child-list">
+                          <li>Up To 25,000 Emails</li>
+                          </ul>
+                          </li>
+                        <li>Priority Email and Ticketing Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-3 powerpixelplus-plan card col">
+                <div class="title"><h4>PowerPixel<span>+</span> Plan</h4></div>
+                <div class="price"><p>For businesses looking to jumpstart growth, by identifying and engaging their audience to boost conversions.</p><h6><strong>$361</strong>/mo</h6><p><strong>Billed Yearly</strong></p></div>
+                <div class="credit-form">
+                    <form id="powerpixelplusplan-credit-form">
+                        <select
+                         class="form-select powerpixelplusplan-credit-select form-select mb-3" aria-label="select example">
+                            <option selected value="$361">750 credits/month</option>
+                            <option value="$489">1200 credits/month</option>
+                            <option value="$722">2200 credits/month</option>
+                            <option value="$1,254">5000 credits/month</option>
+                            <option value="$1,721">7500 credits/month</option>
+                            <option value="$2,082">10000 credits/month</option>
+                            <option value="$2,805">15000 credits/month</option>
+                            <option value="$3,315">20000 credits/month</option>
+                            <option value="$3,612">25000 credits/month</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="powerpixelplus-plan-btn card-btn">GET STARTED</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                        <li>Email Marketing Included<ul class="child-list">
+                          <li>Up To 50,000 Emails</li>
+                          </ul>
+                          </li>
+                       <li>Auto Email Retargeting Included</li>
+                        <li>Access to Digital Marketing Suite
+                            <ul class="child-list">
+                                <li>IntentionX</li><li>B2B Wizard</li>
+                            </ul>
+                        </li>
+                        <li>Priority Ticket Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-4 powerpixelplusgrowth-plan card col">
+                <div class="title"><h4>PowerPixel<span>+Growth</span> Plan</h4></div>
+                <div class="price"><p>For businesses running ads or marketing, seeking growth by lead generation and increased deal flow.</p><h6><strong>$786</strong>/mo</h6><p><strong>Billed Yearly</strong></p></div>
+                <div class="credit-form">
+                    <form id="powerpixelplusgrowthplan-credit-form">
+                        <select
+                         class="form-select powerpixelplusgrowthplan-credit-select form-select mb-3" aria-label="select example">
+                            <option selected value="$786">750 credits/month</option>
+                            <option value="$914">1200 credits/month</option>
+                            <option value="$1,147">2200 credits/month</option>
+                            <option value="$1,679">5000 credits/month</option>
+                            <option value="$2,146">7500 credits/month</option>
+                            <option value="$2,507">10000 credits/month</option>
+                            <option value="$3,230">15000 credits/month</option>
+                            <option value="$3,740">20000 credits/month</option>
+                            <option value="$4,037">25000 credits/month</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="powerpixelplusgrowth-plan-btn card-btn">GET STARTED</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                       <li>Email Marketing Included<ul class="child-list">
+                          <li>Up To 100,000 Emails</li>
+                          </ul>
+                          </li>
+                       <li>Auto Email Retargeting Included</li>
+                        <li>Digital Marketing Suite Included
+                            <ul class="child-list">
+                                <li>IntentionX</li><li>B2B Wizard</li>
+                            </ul>
+                        </li>
+                        <li>Priority Ticket Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-4 enterprise-plan card col">
+                <div class="title"><h4>Enterprise Plan</h4></div>
+                <div class="price"><p>For businesses with 60,000+ monthly website visitors. Custom plans are available.</p><h6><strong>BOOK A DEMO</strong></h6><p><strong>35,000+ Credits</strong></p></div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="enterprise-plan-btn card-btn">Book A Demo</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                        <li>Email Marketing<ul class="child-list">
+                          <li>Unlimited Emails Included</li>
+                          </ul>
+                          </li>
+                       <li>Auto Email Retargeting Included</li>
+                        <li>Digital Marketing Suite Included
+                            <ul class="child-list">
+                                <li>IntentionX</li><li>B2B Wizard</li>
+                            </ul>
+                        </li>
+                        <li>Priority Ticket Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+			 <!-- ----MONTHLY SUB---- -->
+         <div class="edu-content cards-row row" data-content id="monthly">
+            
+            <div class="card-2 powerpixel-plan card col">
+                <div class="title"><h4>PowerPixel Plan</h4></div>
+                <div class="price"><p>For businesses interested in identifying web visitors and tracking their behavior throughout website.</p><h6><strong>$350</strong>/mo</h6><p><strong>Billed Monthly</strong></p></div>
+                <div class="credit-form">
+                    <form id="powerpixelplan-credit-form">
+                        <select
+                         class="form-select powerpixelplan-credit-select form-select mb-3" aria-label="select example">
+                            <option selected value="$350">750 credits/month</option>
+                            <option value="$500">1200 credits/month</option>
+                            <option value="$750">2200 credits/month</option>
+                            <option value="$1,375">5000 credits/month</option>
+                            <option value="$1,875">7500 credits/month</option>
+                            <option value="$2,250">10000 credits/month</option>
+                            <option value="$3,000">15000 credits/month</option>
+                            <option value="$3,500">20000 credits/month</option>
+                            <option value="$3,750">25000 credits/month</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="powerpixel-plan-btn card-btn">GET STARTED</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                        <li>Email Marketing Included<ul class="child-list">
+                          <li>Up To 25,000 Emails</li>
+                          </ul>
+                          </li>
+                        <li>Priority Email and Ticketing Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-3 powerpixelplus-plan card col">
+                <div class="title"><h4>PowerPixel<span>+</span> Plan</h4></div>
+                <div class="price"><p>For businesses looking to jumpstart growth, by identifying and engaging their audience to boost conversions.</p><h6><strong>$425</strong>/mo</h6><p><strong>Billed Monthly</strong></p></div>
+                <div class="credit-form">
+                    <form id="powerpixelplusplan-credit-form">
+                        <select
+                         class="form-select powerpixelplusplan-credit-select form-select mb-3" aria-label="select example">
+                            <option selected value="$425">750 credits/month</option>
+                            <option value="$575">1200 credits/month</option>
+                            <option value="$850">2200 credits/month</option>
+                            <option value="$1,475">5000 credits/month</option>
+                            <option value="$2,025">7500 credits/month</option>
+                            <option value="$2,450">10000 credits/month</option>
+                            <option value="$3,300">15000 credits/month</option>
+                            <option value="$3,900">20000 credits/month</option>
+                            <option value="$4,250">25000 credits/month</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="powerpixelplus-plan-btn card-btn">GET STARTED</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                       <li>Email Marketing Included<ul class="child-list">
+                          <li>Up To 50,000 Emails</li>
+                          </ul>
+                          </li>
+                      <li>Auto Email Retargeting Included</li>
+                        <li>Access to Digital Marketing Suite
+                            <ul class="child-list">
+                                <li>IntentionX</li><li>B2B Wizard</li>
+                            </ul>
+                        </li>
+                        <li>Priority Ticket Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-4 powerpixelplusgrowth-plan card col">
+                <div class="title"><h4>PowerPixel<span>+Growth</span> Plan</h4></div>
+                <div class="price"><p>For businesses running ads or marketing, seeking growth by lead generation and increased deal flow.</p><h6><strong>$925</strong>/mo</h6><p><strong>Billed Monthly</strong></p></div>
+                <div class="credit-form">
+                    <form id="powerpixelplusgrowthplan-credit-form">
+                        <select
+                         class="form-select powerpixelplusgrowthplan-credit-select form-select mb-3" aria-label="select example">
+                            <option selected value="$925">750 credits/month</option>
+                            <option value="$1,075">1200 credits/month</option>
+                            <option value="$1,350">2200 credits/month</option>
+                            <option value="$1,975">5000 credits/month</option>
+                            <option value="$2,525">7500 credits/month</option>
+                            <option value="$2,950">10000 credits/month</option>
+                            <option value="$3,800">15000 credits/month</option>
+                            <option value="$4,400">20000 credits/month</option>
+                            <option value="$4,750">25000 credits/month</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="powerpixelplusgrowth-plan-btn card-btn">GET STARTED</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                        <li>Email Marketing Included<ul class="child-list">
+                          <li>Up To 100,000 Emails</li>
+                          </ul>
+                          </li>
+                      <li>Auto Email Retargeting Included</li>
+                        <li>Digital Marketing Suite Include
+                            <ul class="child-list">
+                                <li>IntentionX</li><li>B2B Wizard</li>
+                            </ul>
+                        </li>
+                        <li>Priority Ticket Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-4 enterprise-plan card col">
+                <div class="title"><h4>Enterprise Plan</h4></div>
+                <div class="price"><p>For businesses with 60,000+ monthly website visitors. Custom plans are available.</p><h6><strong>BOOK A DEMO</strong></h6><p><strong>35,000+ Credits</strong></p></div>
+                <a href="https://app.pixonomi.com/auth/create-account"><button class="enterprise-plan-btn card-btn">Book A Demo</button></a>
+                <div class="list">
+                    <hr>
+                    <ul>
+                        <li>PowerPixel: Identified Web Visitors</li>
+                        <li>Visitor Activity Tracking</li>
+                        <li>Dashboard: w/real-time web visitor display & analytics</li>
+                         <li>Email Marketing<ul class="child-list">
+                          <li>Unlimited Emails Included</li>
+                          </ul>
+                          </li>
+                       <li>Auto Email Retargeting Included</li>
+                        <li>Digital Marketing Suite Included
+                            <ul class="child-list">
+                                <li>IntentionX</li><li>B2B Wizard</li>
+                            </ul>
+                        </li>
+                        <li>Priority Ticket Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+    </div>
+
+    <!--  -->
+    <div class="container pricing-container">
+        <div class="pricing-heading">
+            <h1><strong>PowerPixel Pricing!</strong></h1>
+            <h3><strong>How it works</strong></h3>
+        </div>
+
+        <div class="pricing-paragraph">
+            <p>At Pixonomi, we believe in keeping things straightforward and customer-friendly. Our pricing model is designed with your ease in mind, ensuring you get the most value without any unnecessary complications.</p>
+        </div>
+
+        <div class="how-it-works pp-features">
+            <h3>🚀 How It Works: Credits in Action</h3>
+            <ul>
+                <li>• 💳 <span>Purchase Credits:</span> After making a payment, you'll receive a block of credits sent directly to your client dashboard. It's like stocking up on tokens for your favorite arcade games.</li>
+                <li>• 👤 <span>1 Credit = 1 Identified Visitor:</span> Each credit is your golden token to identifying one website visitor. When a new identified visitor lands in your dashboard, you lose 1 credit. It's that simple – no complicated math.</li>
+                <li>• 🔄 <span>Automatic Replenishment:</span> When your credits run low, we've got your back. Your credits will automatically replenish, and you'll be charged your chosen price for a fresh block of credits. It's like magic, but better!</li>
+            </ul>
+        </div>
+
+        <div class="why-pixonomi pp-features">
+            <h3>🎉 Why Pixonomi's #1:</h3>
+            <ul>
+                <li>• ✨ <span>No Long Contracts:</span> We hate long-term commitments as much as you do. With Pixonomi, you're never forced into lengthy contracts. Stay as long as you love our service – no strings attached.</li>
+                <li>• 📅 <span>Pay Only When You Need:</span> Forget monthly charges for leads you haven't received. Pixonomi charges you only when you replenish your credits, regardless of how much time passes. It's your pace, your terms!</li>
+                <li>• 🌐 <span>Identify Visitors in Real-time:</span> PowerPixel identifies website visitors as soon as they land on your page, then immediately sends that information into your client dashboard or CRM, in “Real-time.”</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--  -->
+    <div class="container pricing-container">
+        <div class="pricing-heading">
+            <h1><strong>Supercharge Your Digital Insights!</strong></h1>
+        </div>
+
+        <div class="pricing-paragraph">
+            <p>With Pixonomi's Premium Products</p>
+        </div>
+
+        <div class="b2b-wiard box">
+            <div class="box-feature">B2B Wizard</div>
+            <h5>Industry-Specific Targeting</h5>
+            <p>Search by Industry, SIC codes or NAICS codes to access business lists and the targeted leads of millions of executives across thousands of Industries</p>
+        </div>
+        <div class="intentionx box">
+            <div class="box-feature">IntentionX</div>
+            <h5>Who’s Interested in Your Business or Service?</h5>
+            <p>Access our list of thousands of brands, interest, products, and services, and find out exactly who is currently searching for it online.</p>
+        </div>
+        <div class="para"><p>Premium products are only available to PowerPixel clients.<br>
+            To access these premium products, please purchase any paid Plan above.</p></div>
+    </div>
+
+    <!--  -->
+    <div class="bookcall-container">
+        <h3>Have More Questions About Our Plans Or Products?</h3>
+        <button class="bookcall-btn"><a href="">Book A Call</a></button>
+    </div>
+
+    <!--  -->
+    <div class="cards container cards-2">
+        <div class="pricing-heading">
+            <h1><strong>Why Choose Us?</strong></h1>
+        </div>
+        <div class="row cards-row">
+            <div class="card col choose">
+                <img src="https://assets.cdn.filesafe.space/5j2MPEwpyHAxvamQdcv6/media/656068e1c2b9616202b3813c.png" alt="">
+                <span>Transparent Usage:</span>
+                <p>Access your leads and monitor your credit usage in real-time through your client dashboard</p>
+            </div>
+            <div class="card col choose">
+                <img src="https://assets.cdn.filesafe.space/5j2MPEwpyHAxvamQdcv6/media/656068e11ffea759c7ad7baf.png" alt="">
+                <span>No Interruptions:</span>
+                <p>With automatic recharges, your lead acquisition continues smoothly.</p>
+            </div>
+            <div class="card col choose">
+                <img src="https://assets.cdn.filesafe.space/5j2MPEwpyHAxvamQdcv6/media/656068e1c2b961a9e2b3813d.png" alt="">
+                <span>Flexible Options:</span>
+                <p>We service businesses of all sizes. Whether you’re a startup or seeking growth, we have a plan for you!</p>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <div class="container faq-container">
+        <div class="pricing-heading">
+            <h1><strong>FAQ</strong></h1>
+        </div>
+        <div class="accordion accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="-collapseOne">
+                    What if I run out of credits before the month is over?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">Your credits will automatically be replenished when you reach the 25-credit mark, ensuring a continuous flow of leads.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="-collapseTwo">
+                    Can I change my credit block size?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">Absolutely! Contact our support team to adjust your credit block according to your evolving needs.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="-collapseThree">
+                    Are there any long-term contracts?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">No, our system is pay-as-you-go. You can adjust your credit blocks or cancel at any time</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="-collapseThree">
+                    What if I want to order an IntentionX audience or B2B industry list independently?
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">IntentionX and B2B Wizard products are only available to Pixonomi clients to assist our clients in their digital marketing efforts. To order one of these products, please purchase one of our paid Plans above</div>
+                </div>
+              </div>
+          </div>
+    </div>
+
+    <!-- FOOTER -->
+  
+    <!-- SCRIPT FILES -->
+   
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!--Plugin JavaScript file-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script> 
+    <script>
+        const body = document.body;
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', ()=>{
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0){
+                body.classList.remove("scroll-up");
+            }
+            if(currentScroll > lastScroll && !body.classList.contains("scroll-down")){
+                body.classList.remove("scroll-up");
+                body.classList.add("scroll-down");
+            }
+            if(currentScroll < lastScroll && body.classList.contains("scroll-down")){
+                body.classList.remove("scroll-down");
+                body.classList.add("scroll-up");
+            }
+
+            lastScroll = currentScroll;
+        })
+
+        // Yearly and Monthly subs
+const sel = document.querySelectorAll('[data-target]'),
+    contents = document.querySelectorAll('[data-content]'),
+    // underline = document.querySelectorAll('.edu-btn'),
+    edu = document.querySelector('.edu'),
+    work = document.querySelector('.work');
+
+sel.forEach(tab =>{
+    tab.addEventListener('click', ()=>{
+        const target = document.querySelector(tab.dataset.target)
+
+        contents.forEach(content =>{
+            content.classList.remove('selected');
+        })
+        target.classList.add('selected');
+        tab.forEach(tab =>{
+            tab.classList.remove('selected');
+        })
+        tab.classList.add('selected');
+    })
+})
+// Add and remove colourful underline(border-bottom) to experience tabs
+edu.addEventListener('click', ()=>{
+    edu.classList.add('underline');
+    work.classList.remove('underline');
+})
+work.addEventListener('click', ()=>{
+    work.classList.add('underline');
+    edu.classList.remove('underline');
+})
+
+
+//Plans & Prices
+const credits = ["750 credits/month", "1200 credits/month", "5000 credits/month", "5000 credits/month", "7500 credits/month", "10000 credits/month", "15000 credits/month", "20000 credits/month", "25000 credits/month"]
+
+let ppCredit = document.querySelector("#monthly .powerpixelplan-credit-select");
+let pppCredit = document.querySelector("#monthly .powerpixelplusplan-credit-select");
+let pppgCredit = document.querySelector("#monthly .powerpixelplusgrowthplan-credit-select");
+
+let ppCredit_yearly = document.querySelector("#yearly .powerpixelplan-credit-select");
+let pppCredit_yearly = document.querySelector("#yearly .powerpixelplusplan-credit-select");
+let pppgCredit_yearly = document.querySelector("#yearly .powerpixelplusgrowthplan-credit-select");
+
+ppCredit.addEventListener("change", ()=>{
+    document.querySelector("#monthly .powerpixel-plan .price h6 strong").innerHTML = ppCredit.value;
+})
+pppCredit.addEventListener("change", ()=>{
+    document.querySelector("#monthly .powerpixelplus-plan .price h6 strong").innerHTML = pppCredit.value;
+})
+pppgCredit.addEventListener("change", ()=>{
+    document.querySelector("#monthly .powerpixelplusgrowth-plan .price h6 strong").innerHTML = pppgCredit.value;
+})
+
+ppCredit_yearly.addEventListener("change", ()=>{
+    document.querySelector("#yearly .powerpixel-plan .price h6 strong").innerHTML = ppCredit_yearly.value;
+})
+pppCredit_yearly.addEventListener("change", ()=>{
+    document.querySelector("#yearly .powerpixelplus-plan .price h6 strong").innerHTML = pppCredit_yearly.value;
+})
+pppgCredit_yearly.addEventListener("change", ()=>{
+    document.querySelector("#yearly .powerpixelplusgrowth-plan .price h6 strong").innerHTML = pppgCredit_yearly.value;
+})
+
+
+// Change Monthly sub Price onchange of dropdown
+
+
+// credits.forEach((credit, i)=>{
+//     let opt =  document.createElement("option");
+//     opt.value = i;
+//     opt.innerHTML = credit;
+//     selectCredit.forEach(selected =>{
+//         selected.appendChild(opt);
+//     })
+// })
+
+    </script>
+</body>
+</html>
